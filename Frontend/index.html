@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemoStack – Your personal space for notes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Login View -->
+        <div id="login-view" class="view">
+            <div class="login-wrapper">
+                <div class="login-left">
+                    <div class="login-left-content">
+                        <h1>MemoStack</h1>
+                        <p class="brand-tagline">Your personal space for notes.</p>
+                        <ul class="benefit-list">
+                            <li>Increases focus</li>
+                            <li>Makes you a better listener</li>
+                            <li>Reference for later use</li>
+                            <li>Helps memory retention</li>
+                        </ul>
+                    </div>
+                    <div class="shape-decoration"></div>
+                </div>
+                <div class="login-right">
+                    <div class="login-container">
+                        <h2>Login Account</h2>
+                        <p class="subtitle">Welcome back! Please enter your details.</p>
+                        <form id="login-form">
+                            <div class="input-group">
+                                <label for="username">Username / Email</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="username" placeholder="Enter your username" required>
+                                    <span class="icon">📧</span>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="password">Password</label>
+                                <div class="input-wrapper">
+                                    <input type="password" id="password" placeholder="Enter your password" required>
+                                    <span class="icon">🔒</span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <a href="#" class="forgot-password">Forgot Password?</a>
+                            </div>
+                            <button type="submit" class="btn-primary">Login Account</button>
+                            <p class="info-text">Don't have an account? <a href="#">Create Account</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard View -->
+        <div id="dashboard-view" class="view hidden">
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h2>NoteNexus</h2>
+                    <div class="header-actions">
+                        <button id="view-toggle-btn" class="btn-icon" title="Toggle View">
+                            <!-- Default to Grid Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                            </svg>
+                        </button>
+                        <button id="add-note-btn" class="btn-icon" title="Add Note">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="notes-list" id="notes-list">
+                    <!-- Note items will be injected here -->
+                    <div class="note-list-item note-list-item--selected">
+                        <div class="note-small-title">Meeting Notes</div>
+                        <div class="note-small-body">Discuss project roadmap...</div>
+                        <div class="note-small-updated">10:30 AM</div>
+                    </div>
+                </div>
+                <div class="sidebar-footer">
+                    <button id="logout-btn" class="btn-secondary">Logout</button>
+                </div>
+            </aside>
+            <main class="main-content">
+                <button id="sidebar-toggle" class="sidebar-toggle" title="Toggle Sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <div class="note-editor" id="note-editor">
+                    <input type="text" class="note-title-input" id="note-title" placeholder="Note Title">
+                    <textarea class="note-body-input" id="note-body" placeholder="Write your note here..."></textarea>
+                </div>
+                <div class="empty-state hidden" id="empty-state">
+                    <p>Select a note to view or create a new one.</p>
+                </div>
+            </main>
+
+            <!-- Sticky Notes Board View -->
+            <div id="sticky-board-view" class="sticky-board hidden">
+                <div class="sticky-header">
+                    <h2>My Sticky Board</h2>
+                    <button id="close-board-btn" class="btn-icon mobile-only" title="Back to list">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="sticky-grid" id="sticky-grid">
+                    <!-- Sticky notes will be injected here -->
+                </div>
+                <div class="empty-board-state hidden" id="empty-board-state">
+                    <p>Your board is empty. Add a note to get started!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

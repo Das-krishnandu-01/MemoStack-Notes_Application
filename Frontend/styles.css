@@ -1,0 +1,816 @@
+:root {
+    /* Brand Colors (Olive Theme) */
+    --primary-color: #556b2f;
+    /* Dark Olive Green */
+    --primary-hover: #3e4f22;
+    /* Darker Olive */
+    --accent-color: #8da35c;
+    /* Lighter Olive/Sage */
+
+    /* Backgrounds */
+    --bg-gradient: linear-gradient(135deg, #fdfcf5 0%, #f4f7e6 100%);
+    /* Warm olive/beige tint */
+    --sidebar-bg: #fdfcf8;
+    /* Off-white/cream */
+
+    --main-bg: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.9);
+
+    /* Text */
+    --text-main: #2c331f;
+    /* Dark Olive/Black */
+    --text-muted: #5e6650;
+    /* Muted Olive Gray */
+    --text-light: #8c967d;
+    /* Light Olive Gray */
+
+    /* Borders & Shadows */
+    --border-color: rgba(138, 154, 91, 0.2);
+    /* Olive Border */
+    --border-focus: #556b2f;
+    --shadow-sm: 0 1px 2px 0 rgba(85, 107, 47, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(85, 107, 47, 0.1), 0 2px 4px -1px rgba(85, 107, 47, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(85, 107, 47, 0.1), 0 4px 6px -2px rgba(85, 107, 47, 0.05);
+    --glass-shadow: 0 8px 32px 0 rgba(85, 107, 47, 0.1);
+
+    /* Layout */
+    --radius: 12px;
+    --radius-sm: 8px;
+    --sidebar-width: 280px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    line-height: 1.5;
+}
+
+#app,
+.view {
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Login View (Redesigned - Olive Theme) --- */
+#login-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f9f0;
+    /* Very light olive bg */
+    height: 100vh;
+    padding: 2rem;
+}
+
+.login-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    height: 600px;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(85, 107, 47, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Left Panel - Image/Branding */
+.login-left {
+    flex: 1;
+    background-color: #e8ecd6;
+    /* Light olive/sage */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem;
+    overflow: hidden;
+}
+
+/* Geometric Decoration */
+.login-left::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #8da35c 0%, #556b2f 100%);
+    /* Olive Gradient */
+    clip-path: circle(70% at 0% 0%);
+    /* Top-left curve */
+    z-index: 1;
+}
+
+.login-left::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(85, 107, 47, 0.2);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Content over the shapes */
+.login-left-content {
+    position: relative;
+    z-index: 2;
+    /* Above shapes */
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.login-left-content h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+}
+
+.brand-tagline {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    font-style: italic;
+    color: #f1f5e6;
+}
+
+.benefit-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+}
+
+.benefit-list li {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.benefit-list li::before {
+    content: '✓';
+    display: inline-block;
+    margin-right: 10px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    font-size: 0.9rem;
+}
+
+
+/* Right Panel - Form */
+.login-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    background: white;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 380px;
+    text-align: left;
+    /* Align form text left */
+}
+
+.login-container h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: #2c331f;
+    /* Dark Olive Text */
+}
+
+.subtitle {
+    color: #64748b;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 0.9rem 2.5rem 0.9rem 1rem;
+    /* Space for icon */
+    border: none;
+    background-color: #f3f4f6;
+    /* Light gray input bg */
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1f2937;
+    transition: all 0.2s;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px var(--primary-color);
+    /* Green focus ring */
+}
+
+.input-wrapper .icon {
+    position: absolute;
+    right: 1rem;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+}
+
+.forgot-password {
+    font-size: 0.8rem;
+    color: #6b7280;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.forgot-password:hover {
+    color: var(--primary-color);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-color);
+    /* Primary Green */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(85, 107, 47, 0.3);
+    transition: all 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    /* Darker Green */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(85, 107, 47, 0.4);
+}
+
+.info-text {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.info-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.info-text a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Login */
+@media (max-width: 768px) {
+    .login-wrapper {
+        flex-direction: column;
+        height: auto;
+        max-width: 500px;
+    }
+
+    .login-left {
+        padding: 2rem;
+        min-height: 200px;
+    }
+
+    .login-left h1 {
+        font-size: 1.8rem;
+    }
+
+    .login-right {
+        padding: 2rem;
+    }
+}
+
+/* --- Dashboard View --- */
+#dashboard-view {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-color: #f7f9f0;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg);
+    /* Lighter slate bg for sidebar */
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    transition: width 0.3s ease;
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid transparent;
+    /* Cleaner look */
+}
+
+.sidebar-header h2 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--primary-color);
+}
+
+.btn-icon {
+    background: white;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    color: var(--primary-color);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-icon:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: rotate(90deg);
+}
+
+.notes-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 0.5rem;
+}
+
+.note-list-item {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.note-list-item:hover {
+    background-color: white;
+    box-shadow: var(--shadow-sm);
+    transform: translateX(2px);
+}
+
+.note-list-item--selected {
+    background-color: white;
+    border-color: var(--border-color);
+    box-shadow: var(--shadow-md);
+    border-left: 4px solid var(--primary-color);
+}
+
+.note-small-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.note-small-body {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.note-small-updated {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.sidebar-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--sidebar-bg);
+}
+
+.btn-secondary {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+    border-color: var(--danger-color);
+    color: var(--danger-color);
+    background-color: #fff1f2;
+    /* Light red bg */
+}
+
+/* --- Main Content --- */
+.main-content {
+    flex: 1;
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--main-bg);
+    position: relative;
+}
+
+.note-editor {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.note-title-input {
+    font-size: 2.5rem;
+    font-weight: 800;
+    border: none;
+    outline: none;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-family: inherit;
+    background: transparent;
+    letter-spacing: -0.03em;
+}
+
+.note-title-input::placeholder {
+    color: #cbd5e1;
+}
+
+.note-body-input {
+    flex: 1;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    border: none;
+    outline: none;
+    width: 100%;
+    resize: none;
+    color: var(--text-main);
+    font-family: inherit;
+    background: transparent;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.empty-state p {
+    margin-bottom: 1rem;
+    max-width: 300px;
+    line-height: 1.6;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        z-index: 50;
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        background: rgba(255, 255, 255, 0.98);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+        box-shadow: 20px 0 50px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-content {
+        padding: 1.5rem;
+    }
+
+    .note-title-input {
+        font-size: 1.75rem;
+    }
+
+    .sidebar-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.sidebar-toggle {
+    display: none;
+    position: absolute;
+    top: 1.2rem;
+    left: 1rem;
+    z-index: 60;
+    background: white;
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.2s;
+}
+
+.sidebar-toggle:hover {
+    color: var(--primary-color);
+    background: #f8fafc;
+}
+
+/* --- Sticky Board View --- */
+.sticky-board {
+    flex: 1;
+    padding: 2rem;
+    background-color: #f7f9f0;
+    /* Warm olive bg */
+    background-image:
+        radial-gradient(#dce2cc 1.5px, transparent 1.5px),
+        radial-gradient(#dce2cc 1.5px, #f7f9f0 1.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: var(--sidebar-width);
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.sticky-board.hidden {
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Ensure sticky board takes over main content area */
+/* When sticky board is ACTIVE (not hidden), hide main-content */
+#sticky-board-view:not(.hidden)~.main-content {
+    display: none !important;
+}
+
+.sticky-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.sticky-header h2 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.sticky-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2rem;
+    overflow-y: auto;
+    padding: 1rem;
+    padding-bottom: 3rem;
+}
+
+/* Sticky Note Colors - Pastel Palette with Stripes */
+.note-yellow {
+    background-color: #fff9c4;
+    background-image: repeating-linear-gradient(transparent, transparent 19px, #fff59d 20px);
+}
+
+.note-pink {
+    background-color: #f8bbd0;
+    background-image: repeating-linear-gradient(transparent, transparent 19px, #f48fb1 20px);
+}
+
+.note-blue {
+    background-color: #b3e5fc;
+    background-image: repeating-linear-gradient(transparent, transparent 19px, #81d4fa 20px);
+}
+
+.note-green {
+    background-color: #c8e6c9;
+    background-image: repeating-linear-gradient(transparent, transparent 19px, #a5d6a7 20px);
+}
+
+.note-purple {
+    background-color: #e1bee7;
+    background-image: repeating-linear-gradient(transparent, transparent 19px, #ce93d8 20px);
+}
+
+.sticky-title {
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    /* Reduced to align with lines */
+    color: #333;
+    line-height: 1.3;
+    max-height: 2.6em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding-bottom: 5px;
+    border-bottom: 2px dashed rgba(0, 0, 0, 0.1);
+    /* Separator */
+}
+
+.sticky-body {
+    font-size: 0.95rem;
+    color: #444;
+    flex: 1;
+    overflow: hidden;
+    line-height: 20px;
+    /* Aligns with 20px grid stripes */
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+}
+
+.sticky-date {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    font-size: 0.75rem;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: right;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Tape Effect (replaces Pin) */
+.sticky-note::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 30%;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    z-index: 2;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Make note card styling flatter/cuter */
+.sticky-note {
+    aspect-ratio: 1 / 1;
+    padding: 1.5rem 1rem 1rem 1rem;
+    /* Adjust padding */
+    border-radius: 4px;
+    /* Slightly more square */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Inter', sans-serif;
+    /* Cuter font fallback */
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.empty-board-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    text-align: center;
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.mobile-only {
+    display: none !important;
+}
+
+/* Responsive updates for sticky board */
+@media (max-width: 768px) {
+    .sticky-board {
+        left: 0;
+        padding: 1rem;
+        z-index: 40;
+        /* Lower than sidebar (50) */
+    }
+
+    .sticky-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+
+    .sticky-note {
+        padding: 1rem;
+    }
+
+    .mobile-only {
+        display: flex !important;
+    }
+}
